@@ -3,5 +3,4 @@ selenium
 pandas
 openpyxl
 matplotlib
-time
 seaborn
