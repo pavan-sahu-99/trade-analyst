@@ -3,7 +3,11 @@ import json
 import time
 import urllib.parse
 from selenium import webdriver
+from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.chrome.options import Options
+from webdriver_manager.chrome import ChromeDriverManager
+import os
+
 
 def get_sector_data(sector_name):
     try:
@@ -20,7 +24,8 @@ def get_sector_data(sector_name):
         options.add_argument("start-maximized")
         options.add_argument("user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64)")
 
-        driver = webdriver.Chrome(options=options)
+        service = Service(ChromeDriverManager().install())
+        driver = webdriver.Chrome(service=service, options=options)
 
         # Get cookies from homepage
         driver.get("https://www.nseindia.com")
@@ -50,3 +55,6 @@ def get_sector_data(sector_name):
     except Exception as e:
         print(f"Error fetching sector data for {sector_name}: {e}")
         return pd.DataFrame()
+
+data = get_sector_data("NIFTY AUTO")
+print(data)

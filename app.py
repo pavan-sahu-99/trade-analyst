@@ -3,21 +3,16 @@ from utils import Ch_oi_oi_spurt, most_active_contracts, secorials, sectorial_st
 
 st.set_page_config(page_title="Trade Analyst", layout="wide")
 st.title("📈 Trade Analyst")
-
-menu = st.sidebar.radio("Select Feature", ["Indices","Intraday Boost", "Most Active Contracts", "Market Pulse"])
+#
+menu = st.sidebar.radio("Select Feature", ["Indices","Intraday Boost", "Market Pulse", "Most Active Contracts"])
 
 # Optional Refresh Button
 if st.button('🔄 Refresh Data'):
     st.rerun()
 
-if menu == "OI Spurts":
+if menu == "Intraday Boost":
     st.subheader("🔥 OI Spurts in Derivatives")
     df = Ch_oi_oi_spurt.get_oi_spurts()
-    st.dataframe(df)
-
-elif menu == "Most Active Contracts":
-    st.subheader("💥 Most Active Equities")
-    df = most_active_contracts.most_active_eq()
     st.dataframe(df)
 
 elif menu == "Indices":
@@ -47,5 +42,9 @@ elif menu == "Market Pulse":
     else:
         st.warning(f"No F&O data found for {selected_sector}")
 
+elif menu == "Most Active Contracts":
+    st.subheader("💥 Most Active Equities")
+    df = most_active_contracts.most_active_eq()
+    st.dataframe(df)
 
 #streamlit run app.py
