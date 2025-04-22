@@ -55,5 +55,5 @@ def sectorials():
 
     return filtered_df
 
-data = sectorials()
-print(data.head())
+#data = sectorials()
+#print(data.head())
