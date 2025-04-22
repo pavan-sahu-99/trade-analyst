@@ -56,5 +56,5 @@ def get_sector_data(sector_name):
         print(f"Error fetching sector data for {sector_name}: {e}")
         return pd.DataFrame()
 
-data = get_sector_data("NIFTY AUTO")
-print(data)
+#data = get_sector_data("NIFTY AUTO")
+#print(data)
