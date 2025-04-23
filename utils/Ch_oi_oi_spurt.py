@@ -18,9 +18,8 @@ def get_oi_spurts():
     options.add_argument("start-maximized")
     options.add_argument("user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64)")
 
-    # Automatically manage ChromeDriver
-    service = Service(ChromeDriverManager().install())
-    driver = webdriver.Chrome(service=Service(ChromeDriverManager(version="120.0.6099.224").install()), options=options)
+    #service = Service(ChromeDriverManager().install())
+    driver = webdriver.Chrome(options=options)
 
     try:
 
@@ -49,5 +48,8 @@ def get_oi_spurts():
     
     return filtered_df
 
-#data = get_oi_spurts()
-#print(data.head())
+
+if __name__ == "__main__":
+    data = get_oi_spurts()
+    print(data.head())
+

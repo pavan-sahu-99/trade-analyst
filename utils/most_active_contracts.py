@@ -16,9 +16,8 @@ def most_active_eq():
     options.add_argument("start-maximized")
     options.add_argument("user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64)")
 
-    # Automatically manage ChromeDriver
-    service = Service(ChromeDriverManager().install())
-    driver = webdriver.Chrome(service=service, options=options)
+    #service = Service(ChromeDriverManager().install())
+    driver = webdriver.Chrome(options=options)
 
     try:
         # Step 1: Load NSE homepage to get cookies
@@ -47,6 +46,7 @@ def most_active_eq():
 
     return filtered_df
 
-# Uncomment to test
-# data = most_active_eq()
-# print(data.head())
+
+if __name__ == "__main__":
+    data = most_active_eq()
+    print(data.head())

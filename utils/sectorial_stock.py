@@ -24,8 +24,8 @@ def get_sector_data(sector_name):
         options.add_argument("start-maximized")
         options.add_argument("user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64)")
 
-        service = Service(ChromeDriverManager().install())
-        driver = webdriver.Chrome(service=service, options=options)
+        #service = Service(ChromeDriverManager().install())
+        driver = webdriver.Chrome(options=options)
 
         # Get cookies from homepage
         driver.get("https://www.nseindia.com")
@@ -48,6 +48,7 @@ def get_sector_data(sector_name):
             df = df[df['symbol'].str.upper().isin(fo_symbols)]  # Filter F&O only
             df = df[["symbol", "lastPrice", "pChange", "totalTradedVolume", "totalTradedValue"]]
             df.columns = ["Symbol", "Last Price", "% Change", "Volume", "Total Traded Value"]
+            df = df.sort_values(by="% Change", ascending=False)
             return df
         else:
             return pd.DataFrame()
@@ -56,5 +57,8 @@ def get_sector_data(sector_name):
         print(f"Error fetching sector data for {sector_name}: {e}")
         return pd.DataFrame()
 
-#data = get_sector_data("NIFTY AUTO")
-#print(data)
+
+if __name__ == "__main__":
+    data = get_sector_data("NIFTY 50")
+    print(data.head())
+

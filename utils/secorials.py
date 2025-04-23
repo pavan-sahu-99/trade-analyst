@@ -17,8 +17,8 @@ def sectorials():
     options.add_argument("user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64)")
 
     # Automatically manage ChromeDriver
-    service = Service(ChromeDriverManager().install())
-    driver = webdriver.Chrome(service=service, options=options)
+    #service = Service(ChromeDriverManager().install())
+    driver = webdriver.Chrome(options=options)
 
     try:
         # Step 1: Load NSE homepage to get cookies
@@ -37,7 +37,7 @@ def sectorials():
         sector_keywords = [
             "NIFTY AUTO", "NIFTY BANK", "NIFTY FINANCIAL SERVICES", "NIFTY FMCG",
             "NIFTY IT", "NIFTY MEDIA", "NIFTY METAL", "NIFTY PHARMA", "NIFTY PSU BANK",
-            "NIFTY PRIVATE BANK", "NIFTY REALTY", "NIFTY HEALTHCARE INDEX", "NIFTY OIL & GAS"
+            "NIFTY PRIVATE BANK", "NIFTY REALTY", "NIFTY HEALTHCARE INDEX", "NIFTY OIL & GAS","NIFTY 50"
         ]
 
         sectoral_data = [index for index in data if index['index'] in sector_keywords]
@@ -55,5 +55,6 @@ def sectorials():
 
     return filtered_df
 
-#data = sectorials()
-#print(data.head())
+if __name__ == "__main__":
+    data = sectorials()
+    print(data.head())

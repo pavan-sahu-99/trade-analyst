@@ -4,4 +4,8 @@ pandas
 openpyxl
 matplotlib
 seaborn
+<<<<<<< HEAD
 webdriver-manager
+=======
+plotly
+>>>>>>> 00c83f7 (Added Nifty 50 heatmap with sectorial bar graph)
