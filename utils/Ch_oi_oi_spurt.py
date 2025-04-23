@@ -10,7 +10,6 @@ import os
 def get_oi_spurts():
     # Set up headless Chrome
     options = Options()
-    options.binary_location = "/usr/bin/chromium"
     options.add_argument("--headless")
     options.add_argument("--disable-gpu")
     options.add_argument("--no-sandbox")
